@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import './style.css';
 
 // function App() {
 //   const [input, setInput] = useState("");
@@ -61,8 +62,31 @@ import React from "react";
 // 
 
 function App() {
+  const [nutri, setNutri] = useState('');
+
+  useEffect(()=>{
+    function loadApi(){
+      let url ="https://sujeitoprogramador.com/rn-api/?api=posts";
+      fetch(url)
+      .then((response)=> response.json())
+      .then((json)=>{
+        console.log(json);
+        setNutri(json);
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+
+    }
+    loadApi();
+  },[])
+
   return(
-    <div> Teste</div>
+    <div className="container"> 
+      <header>
+        <strong>React Nutri</strong>
+      </header>
+    </div>
   )
   
 }
