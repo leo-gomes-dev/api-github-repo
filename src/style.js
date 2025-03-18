@@ -20,7 +20,7 @@ export const Head = styled.header`
     font-family: 'Roboto', sans-serif;  
 `;
     
-export const Titulo = styled.h1`
+export const Title = styled.h1`
     font-size: 35px;
     color: black;
     font-family: 'Roboto', sans-serif;
