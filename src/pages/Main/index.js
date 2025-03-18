@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useCallback, useEffect } from 'react';
 import { FaGithub, FaPlus, FaSpinner, FaBars, FaTrash } from 'react-icons/fa';
 import { Container, SubmitButton, Form, List, DeleteButon } from './style';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 export default function Main() {
@@ -109,7 +110,9 @@ export default function Main() {
               </DeleteButon>
               {repositorio.name}
             </span>
-            <FaBars size={20} />
+            <Link to={`/repositorio/${encodeURIComponent(repositorio.name)}`}>
+              <FaBars size={20} />
+            </Link>
           </li>
         ))}
       </List>
