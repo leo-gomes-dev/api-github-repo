@@ -1,9 +1,10 @@
-import Routes from "./routes";
+import React from 'react';
+import Router from "./routes";
 
 export default function App(){
   return (
     <>
-      <Routes/>
+      <Router/>
     </>
   );
 }
