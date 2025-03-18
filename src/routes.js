@@ -1,23 +1,14 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Sobre from './pages/Sobre';
-import Contato from './pages/Contato';
-import Produto from './pages/Produto';
-import Erro from './pages/Erro';
-import Header from './components/Header';
+import Main from './pages/Main';
+import Repo from './pages/Repo';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Header/>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/contato" element={<Contato />} />
-        <Route exact path="/produto/:id?" element={<Produto />} />
-
-        {/* Sempre a última rota */}
-        <Route path="*" element={<Erro />} />
+        <Route exact path="/" element={<Main />} />
+        <Route exact path="/" element={<Repo />} />
       </Routes>
     </BrowserRouter>
   );
