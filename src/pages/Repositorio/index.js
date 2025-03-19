@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container } from './styles';
+import { Container, Owner, Loading, BackButton,
+  IssuesList
+ } from './styles';
+import { FaArrowLeft } from 'react-icons/fa';
 import api from '../../services/api';
 
 export default function Repositorio() {
@@ -37,25 +40,42 @@ export default function Repositorio() {
   }, [repositorio]); // Make sure to re-run the effect when `repositorio` changes
 
   if (loading) {
-    return <div>Loading...</div>; // You can customize the loading state message
+    return (
+      <Loading>
+        <h1>Carregando...</h1>
+      </Loading>
+    )
   }
 
   return (
-    <Container style={{ color: '#fff' }}>
-      {/* Render your content here */}
-      <h1>{repo.name}</h1>
-      <p>{repo.description}</p>
-
+    <Container>
+      <BackButton to="/">
+        <FaArrowLeft color='#000' size={30} />
+      </BackButton>
+      <Owner>
+        <img 
+          src={repo.owner.avatar_url} 
+          alt={repo.owner.login} 
+        />
+        <h1>{repo.name}</h1>
+        <p>{repo.description}</p>
+      </Owner>
       <h2>Open Issues</h2>
-      <ul>
+     <IssuesList>
         {issues.map(issue => (
-          <li key={issue.id}>
-            <a href={issue.html_url} target="_blank" rel="noopener noreferrer">
-              {issue.title}
-            </a>
+          <li key={String(issue.id)}>
+            <img src={issue.user.avatar_url} alt={issue.user.login} />
+            <div>
+              <strong>
+              <a href={issue.html_url} target="_blank" rel="noopener noreferrer">
+                {issue.title}
+              </a>
+              </strong>
+            </div>
+            
           </li>
         ))}
-      </ul>
+      </IssuesList>
     </Container>
   );
 }
