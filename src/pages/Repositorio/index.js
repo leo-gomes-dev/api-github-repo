@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Owner, Loading, BackButton,
-  IssuesList, PageActions
+  IssuesList, PageActions, FilterList
  } from './styles';
 import { FaArrowLeft } from 'react-icons/fa';
 import api from '../../services/api';
@@ -12,18 +12,26 @@ export default function Repositorio() {
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [filters, setFilters] = useState([
+    { state: 'all', label: 'Todas', active: true },
+    { state: 'open', label: 'Abertas', active: false },
+    { state: 'closed', label: 'Fechadas', active: false },
+  ]);
+
+  const [filterIndex, setFilterIndex] = useState(0);
 
   useEffect(() => {
     async function load() {
       const nomeRepo = decodeURIComponent(repositorio); // Decodifica o nome do repositório
-      
+
       try {
         const [repositorioData, issuesData] = await Promise.all([ 
           api.get(`/repos/${nomeRepo}`),
           api.get(`/repos/${nomeRepo}/issues`, {
             params: {
-              state: 'open',
+              state: filters.find(f => f.active).state,
               per_page: 5,
+              page,
             },
           })
         ]);
@@ -36,31 +44,22 @@ export default function Repositorio() {
         setLoading(false);
       }
     }
-    
+
     load();
-  }, [repositorio]); // Make sure to re-run the effect when `repositorio` changes
+  }, [repositorio, page, filterIndex]); // Dependências otimizadas para re-renderizar quando necessário
 
-  useEffect(() => {
-    
-    async function loadIssue (){
-      const nomeRepo = decodeURIComponent(repositorio);
+  function handlePage(action) {
+    setPage(action === 'back' ? page - 1 : page + 1);
+  }
 
-      const response = await api.get(`/repos/${nomeRepo}/issues`, {
-        params:{
-          state: 'open',
-          page,
-          per_page: 5,
-        }
-      });
-
-      setIssues(response.data);
-
-    };
-  }, [repositorio, page]);
-
-
-  function handlePage (action){
-    setPage(action === 'back' ? page - 1 : page + 1)
+  function handleFilter(index) {
+    // Atualiza o índice do filtro, mantendo a lógica ativa do filtro
+    const updatedFilters = filters.map((filter, i) => ({
+      ...filter,
+      active: i === index,
+    }));
+    setFilters(updatedFilters);
+    setFilterIndex(index);
   }
 
   if (loading) {
@@ -68,7 +67,7 @@ export default function Repositorio() {
       <Loading>
         <h1>Carregando...</h1>
       </Loading>
-    )
+    );
   }
 
   return (
@@ -84,34 +83,51 @@ export default function Repositorio() {
         <h1>{repo.name}</h1>
         <p>{repo.description}</p>
       </Owner>
-      <h2>Open Issues</h2>
-     <IssuesList>
+
+      <FilterList active={filterIndex}>
+        {filters.map((filter, index) => (
+          <button
+            type='button'
+            key={filter.label}
+            onClick={() => handleFilter(index)}
+          > 
+            {filter.label}
+          </button>
+        ))}
+      </FilterList>
+
+      <IssuesList>
         {issues.map(issue => (
           <li key={String(issue.id)}>
             <img src={issue.user.avatar_url} alt={issue.user.login} />
             <div>
               <strong>
                 <a href={issue.html_url} target="_blank" rel="noopener noreferrer">
-                {issue.title}</a>
+                  {issue.title}
+                </a>
               </strong>
-                {issue.labels.map(label => (
-                  <span key={String(label.id)}>{label.id}</span>
+              {issue.labels.map(label => (
+                <span key={String(label.id)}>{label.name}</span>  
               ))}
             </div>
-            
           </li>
         ))}
       </IssuesList>
+
       <PageActions>
-        <button type='button' 
-        onClick={() => handlePage('back') }
-        disabled={page < 2}
-        > 
-          Voltar 
+        <button 
+          type='button' 
+          onClick={() => handlePage('back')} 
+          disabled={page < 2}
+        >
+          Voltar
         </button>
 
-        <button type='button' onClick={() => handlePage('next')}> 
-          Proxima 
+        <button 
+          type='button' 
+          onClick={() => handlePage('next')}
+        >
+          Próxima
         </button>
       </PageActions>
     </Container>
