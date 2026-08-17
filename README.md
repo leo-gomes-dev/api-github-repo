@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# GitHub Repo Tracker 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![React](https://shields.io)](https://react.dev)
+[![Styled Components](https://shields.io)](https://styled-components.com)
+[![GitHub API](https://shields.io)](https://github.com)
 
-## Available Scripts
+Uma aplicação **Single Page Application (SPA)** moderna desenvolvida em React para buscar, rastrear e gerenciar detalhes de repositórios diretamente da API oficial do GitHub. O projeto foi redesenhado com uma interface imersiva inspirada na cultura *Deep Tech* (Verde Tecnológico) e otimizado com recursos de usabilidade avançada para compor meu portfólio.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 💡 Recursos de Destaque & UX
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Painel Didático Interativo:** Inclusão de um contêiner de legendas e instruções detalhadas para orientar o usuário sobre o padrão de busca (`dono/projeto`).
+- **Atalhos de Seleção Rápida (Quick Select):** Tags interativas clicáveis (`facebook/react`, `vuejs/vue`) que preenchem o campo de input automaticamente, acelerando o teste de usabilidade por recrutadores.
+- **Tratamento de Strings Robusto:** Validação nativa com métodos `.trim()` e `.toLowerCase()` para mitigar erros de espaçamento acidental ou duplicação de repositórios por diferença de caixa.
+- **Persistência de Dados Inteligente:** Sincronização segura dos estados via React Hooks (`useEffect`) com o `localStorage` do navegador, mantendo o histórico do usuário mesmo após o encerramento da sessão.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🎨 Arquitetura de Design: Verde Tecnológico
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A identidade visual foi completamente reformulada para expressar uma estética moderna de desenvolvimento de software:
+- **Cores de Contraste Elevado:** Substituição da paleta clara por um fundo escuro profundo (`#0b0f19`) e cartões grafite (`#111827`) que reduzem a fadiga ocular.
+- **Destaques Neon:** Aplicação do tom Verde Cyberpunk (`#00ff87`) em títulos, bordas ativas e botões de ação com sombras esmaecidas em efeito brilhante (*glow*).
+- **Responsividade e Alinhamento:** Centralização vertical absoluta (`min-height: 100vh`) utilizando CSS Flexbox estruturado via Styled Components.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Tecnologias Utilizadas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **ReactJS (Hooks):** Gerenciamento de ciclo de vida e estados com `useState`, `useEffect` e memorização de callbacks com `useCallback`.
+- **Styled Components:** Estilização baseada em componentes (*CSS-in-JS*) com injeção de propriedades dinâmicas e animações por `keyframes`.
+- **React Icons:** Biblioteca de vetores para carregamento de ícones modernos do ecossistema de código aberto.
+- **Axios / GitHub API:** Consumo assíncrono e integrado de serviços REST.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🔧 Como Executar a Aplicação Localmente
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pré-requisitos
+Certifique-se de ter o gerenciador de pacotes [Node.js / NPM](https://nodejs.org) instalado em seu sistema de arquivos.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Execução
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Clone este repositório:**
+   ```bash
+   git clone https://github.com
+   ```
+2. **Entre na pasta raiz:**
+   ```bash
+   cd NOME_DO_SEU_REPOSITORIO
+   ```
+3. **Instale os módulos de dependência:**
+   ```bash
+   npm install
+   ```
+4. **Inicie o servidor de desenvolvimento local:**
+   ```bash
+   npm start
+   ```
+5. Acesse `http://localhost:3000` no seu navegador para testar a ferramenta.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🔗 Conecte-se Comigo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Se você gostou deste projeto ou quer trocar ideias sobre desenvolvimento de software, fique à vontade para me encontrar em qualquer um dos meus canais oficiais:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 🌐 [Website Oficial](https://leogomesdev.com)
+- 🐙 [GitHub](https://github.com)
+- 💬 [Discord](https://discord.com)
+- 📸 [Instagram](https://instagram.com)
+- 💼 [LinkedIn](https://linkedin.com)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+Desenvolvido por **Leo Gomes Developer** 🚀
