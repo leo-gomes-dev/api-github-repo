@@ -20,20 +20,20 @@ export default function Repositorio() {
 
   const [filterIndex, setFilterIndex] = useState(0);
 
-  useEffect(() => {
+   useEffect(() => {
     async function load() {
       const nomeRepo = decodeURIComponent(repositorio); // Decodifica o nome do repositório
 
       try {
-        const [repositorioData, issuesData] = await Promise.all([ 
+        const [repositorioData, issuesData] = await Promise.all([
           api.get(`/repos/${nomeRepo}`),
           api.get(`/repos/${nomeRepo}/issues`, {
             params: {
-              state: filters.find(f => f.active).state,
+              state: filters.find((f) => f.active).state,
               per_page: 5,
-              page,
+              page, // Indica que a paginação depende do estado 'page'
             },
-          })
+          }),
         ]);
 
         setRepo(repositorioData.data);
@@ -46,7 +46,10 @@ export default function Repositorio() {
     }
 
     load();
-  }, [repositorio, page, filterIndex]); // Dependências otimizadas para re-renderizar quando necessário
+    
+    // CORRIGIDO: Array completo incluindo todas as dependências lidas pelo hook
+  }, [filters, page, repositorio]); 
+
 
   function handlePage(action) {
     setPage(action === 'back' ? page - 1 : page + 1);
