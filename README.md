@@ -1,8 +1,8 @@
 # GitHub Repo Tracker 🚀
 
-[![React](https://shields.io)](https://react.dev)
-[![Styled Components](https://shields.io)](https://styled-components.com)
-[![GitHub API](https://shields.io)](https://github.com)
+[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=000)](https://react.dev)
+[![Styled Components](https://img.shields.io/badge/Styled--Components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=fff)](https://styled-components.com)
+[![GitHub API](https://img.shields.io/badge/GitHub%20API-181717?style=for-the-badge&logo=github&logoColor=fff)](https://docs.github.com/en/rest)
 
 Uma aplicação **Single Page Application (SPA)** moderna desenvolvida em React para buscar, rastrear e gerenciar detalhes de repositórios diretamente da API oficial do GitHub. O projeto foi redesenhado com uma interface imersiva inspirada na cultura *Deep Tech* (Verde Tecnológico) e otimizado com recursos de usabilidade avançada para compor meu portfólio.
 
@@ -44,7 +44,7 @@ Certifique-se de ter o gerenciador de pacotes [Node.js / NPM](https://nodejs.org
 
 1. **Clone este repositório:**
    ```bash
-   git clone https://github.com
+   git clone https://github.com/leo-gomes-dev/api-github-repo.git
    ```
 2. **Entre na pasta raiz:**
    ```bash
